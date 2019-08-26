@@ -14,9 +14,9 @@ alfabeto = 'abcdefghijklmnopqrstuvwxyz '
 chavesConcatenadas = ''
 
 for position in range(len(texto)):
-	#if texto[position] == ' ':
-	#	chavesConcatenadas = chavesConcatenadas + ' '
-	#else: 
+	if texto[position] == ' ':
+		chavesConcatenadas = chavesConcatenadas + ' '
+	else: 
 		chavesConcatenadas = chavesConcatenadas + chave[position%len(chave)]	
 
 mensagemCriptografada = ''
@@ -31,12 +31,11 @@ for caractere in texto:
 	positionTexto.append(alfabeto.find(caractere))
 
 for index in range(len(texto)):
-	position = positionTexto[index] + positionChavesConcatenadas[index] + 1
+	position = positionTexto[index] + positionChavesConcatenadas[index]
 	if position >= len(alfabeto):
-		position = position%len(alfabeto)
+		position = position%len(alfabeto) + 1
 	if position < 0:
 		position = position + len(alfabeto)
-
 	mensagemCriptografada = mensagemCriptografada + alfabeto[position]
 print(texto)
 print(chavesConcatenadas)
