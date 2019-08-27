@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 
+## Digite no termilal
+# python encriptCesar.py texto.txt <chave numérica>
+
 import sys
 import string
 

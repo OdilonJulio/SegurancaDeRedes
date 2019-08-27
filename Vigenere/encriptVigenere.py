@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+
+# python encriptVigenere.py texto.txt
+
 import sys
 import string
 
