@@ -15,12 +15,13 @@ chave = raw_input("Chave: ")
 alfabeto = 'abcdefghijklmnopqrstuvwxyz '
 
 chavesConcatenadas = ''
-
+count = 0
 for position in range(len(texto)):
 	if texto[position] == ' ':
 		chavesConcatenadas = chavesConcatenadas + ' '
+		count += 1
 	else: 
-		chavesConcatenadas = chavesConcatenadas + chave[position%len(chave)]	
+		chavesConcatenadas = chavesConcatenadas + chave[((position - count))%len(chave)]	
 
 mensagemCriptografada = ''
 positionChavesConcatenadas = []

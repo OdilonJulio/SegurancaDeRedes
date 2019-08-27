@@ -5,9 +5,9 @@
 
 import sys
 from PIL import Image
-import HYP_Utils
-import HYP_Texture
-import HYP_Material
+#import HYP_Utils
+#import HYP_Texture
+#import HYP_Material
 
 def cifrar(retratoBinario, mensagemBinaria):
 	count = 0
@@ -42,7 +42,7 @@ def salvarImagem(retrato, caminho, tamanho):
 		arquivo.append(tuple(pixel))
 	novaImagem = Image.new('RGB', tamanho)
 	novaImagem.putdata(arquivo)
-	novaImagem.save('modificado '+caminho)
+	novaImagem.save('editada: '+caminho)
 
 def retratoNormal(retratoBinario):
 	count = 0
@@ -71,15 +71,15 @@ def binDaImagem(retrato):
 	return retratoEmListaBinaria
 
 mensagemParaCifrar = open(sys.argv[2], 'r').read()
-modo = raw_input("Digite 1 para ENCRIPTAR e 2 para DECRIPTAR: ")
+modo = input("Digite 1 para ENCRIPTAR e 2 para DECRIPTAR: ")
 
 if modo == 1:
 	try:
-		imagem = Image.open(sys.argv[1])
+		imagemParaCifrar = Image.open(sys.argv[1])
 	except IOError as erro:
 		print('Houve um erro ao tentar abrir a imagem.')
-	if len(sys.argv[1])*8 < len(imagem.getdata()*3):
-		salvarImagem(retratoNormal(cifrar(binDaImagem(imagem), binDaMensagem(mensagemParaCifrar))), sys.argv[1], imagem.size())
+	if len(sys.argv[1])*8 < len(imagemParaCifrar.getdata()*3):
+		salvarImagem(retratoNormal(cifrar(binDaImagem(imagemParaCifrar), binDaMensagem(mensagemParaCifrar))), sys.argv[1], imagem.size())
 	else:
 		print('A mensagem não cabe na imagem.')
 elif modo == 2:
